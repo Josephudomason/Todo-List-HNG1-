@@ -216,12 +216,11 @@ function getEditFormMarkup(draftTask, task) {
             data-testid="test-todo-edit-priority-select"
           >
             ${PRIORITY_OPTIONS.map(
-              (priority) => `
-                <option value="${escapeHtml(priority)}"${
-                  draftTask.priority === priority ? " selected" : ""
-                }>${escapeHtml(priority)}</option>
+    (priority) => `
+                <option value="${escapeHtml(priority)}"${draftTask.priority === priority ? " selected" : ""
+      }>${escapeHtml(priority)}</option>
               `,
-            ).join("")}
+  ).join("")}
           </select>
         </div>
         <div class="field-stack">
@@ -273,15 +272,14 @@ function getStatusSummaryMarkup(task, overdue) {
       >
         ${escapeHtml(task.status)}
       </span>
-      ${
-        overdue
-          ? `
+      ${overdue
+      ? `
             <span class="badge badge-overdue" data-testid="test-todo-overdue-indicator">
               Overdue
             </span>
           `
-          : ""
-      }
+      : ""
+    }
     </div>
   `;
 }
@@ -351,12 +349,11 @@ function renderCard() {
               aria-label="Task status"
             >
               ${STATUS_OPTIONS.map(
-                (status) => `
-                  <option value="${escapeHtml(status)}"${
-                    task.status === status ? " selected" : ""
-                  }>${escapeHtml(status)}</option>
+    (status) => `
+                  <option value="${escapeHtml(status)}"${task.status === status ? " selected" : ""
+      }>${escapeHtml(status)}</option>
                 `,
-              ).join("")}
+  ).join("")}
             </select>
           </div>
 
@@ -372,9 +369,8 @@ function renderCard() {
           </button>
 
           <div class="toolbar-actions">
-            ${
-              state.isEditing
-                ? `
+            ${state.isEditing
+      ? `
                   <button
                     type="button"
                     class="action-button action-button-primary"
@@ -392,7 +388,7 @@ function renderCard() {
                     Cancel
                   </button>
                 `
-                : `
+      : `
                   <button
                     type="button"
                     class="action-button action-button-secondary"
@@ -410,18 +406,17 @@ function renderCard() {
                     Delete
                   </button>
                 `
-            }
+    }
           </div>
         </div>
       </header>
 
       <section class="card-body">
         <div class="content-panel">
-          ${
-            state.isEditing
-              ? getEditFormMarkup(draftTask, task)
-              : `${getDisplayTitleMarkup(task)}${getDisplayDescriptionMarkup(task)}`
-          }
+          ${state.isEditing
+      ? getEditFormMarkup(draftTask, task)
+      : `${getDisplayTitleMarkup(task)}${getDisplayDescriptionMarkup(task)}`
+    }
         </div>
 
         <aside class="summary-panel" aria-label="Task summary">
@@ -450,15 +445,15 @@ function renderCard() {
 
           <ul class="tag-list" role="list" data-testid="test-todo-tags">
             ${task.tags
-              .map((tag) => {
-                const testId =
-                  tag === "work" || tag === "urgent"
-                    ? ` data-testid="test-todo-tag-${escapeHtml(tag)}"`
-                    : "";
+      .map((tag) => {
+        const testId =
+          tag === "work" || tag === "urgent"
+            ? ` data-testid="test-todo-tag-${escapeHtml(tag)}"`
+            : "";
 
-                return `<li class="tag-chip"${testId}>${escapeHtml(tag)}</li>`;
-              })
-              .join("")}
+        return `<li class="tag-chip"${testId}>${escapeHtml(tag)}</li>`;
+      })
+      .join("")}
           </ul>
         </aside>
       </section>
